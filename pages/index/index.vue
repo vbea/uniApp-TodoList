@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view class="container">
 		<view class="list-todo">
 			<view id="item.objectId" class="item-todo" hover-class="hover-item" v-for="item in todoList" v-bind:key="item.objectId">
 				<view class="item-title">{{item.content}}</view>
@@ -65,9 +65,6 @@
 	}
 </style>
 <style>
-	.content {
-		font-size: 30rpx;
-	}
 	
 	.item-todo {
 		padding: 15rpx 20rpx;
@@ -84,15 +81,5 @@
 	.item-update {
 		color: #C0C0C0;
 		font-size: 25rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
 	}
 </style>

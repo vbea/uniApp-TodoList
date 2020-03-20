@@ -10,8 +10,9 @@
 			console.log('App Hide')
 		}
 	}
-</script>
-
+</script>	
 <style>
-	/*每个页面公共css */
+	.container {
+		font-size: 30rpx;
+	}
 </style>

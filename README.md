@@ -11,4 +11,4 @@ vbe
 
 `npm install hydrogen-js-sdk`
 
-开发工具：|[HBuilderX](https://www.dcloud.io/hbuilderx.html)
+开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)

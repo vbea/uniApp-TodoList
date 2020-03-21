@@ -10,3 +10,5 @@ vbe
 `npm install @dcloudio/uni-ui`
 
 `npm install hydrogen-js-sdk`
+
+开发工具：|[HBuilderX](https://www.dcloud.io/hbuilderx.html)

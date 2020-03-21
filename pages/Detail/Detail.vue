@@ -1,11 +1,10 @@
 <template>
 	<view class="container">
-		<input class="txt-input" type="text" v-model="title" placeholder="Title" maxlength="30"/>
-		<textarea class="txt-content" auto-height placeholder="Content(optional)" v-model="content" maxlength="500"></textarea>
+		<input class="txt-input" type="text" v-model="todo.title" placeholder="Title" maxlength="30"/>
+		<textarea class="txt-content" auto-height placeholder="Content(optional)" v-model="todo.content" maxlength="500"></textarea>
 		<view class="btnAdd">
-			<button class="ui-button" hover-class="button-hover" @click="addData">Add</button>
+			<button class="ui-button" hover-class="button-hover" @click="saveData">Save</button>
 		</view>
-		
 	</view>
 </template>
 
@@ -14,16 +13,25 @@
 	export default {
 		data() {
 			return {
-				title: "",
-				content: ""
+				todo: {
+					title: "",
+					content: ""
+				}
 			}
 		},
 		onLoad:function(){
 			Bmob = getApp().Bmob;
+			if (getApp().globalData.itemData) {
+				this.todo = getApp().globalData.itemData
+			} else {
+				uni.reLaunch({
+					url:"../index/index"
+				})
+			}
 		},
 		methods: {
-			addData: function(e) {
-				if (!this.title.trim()) {
+			saveData: function(e) {
+				if (!this.todo.title.trim()) {
 					uni.showToast({
 						title:"请输入标题",
 						icon:"none"
@@ -34,12 +42,13 @@
 					title:"请稍后..."
 				})
 				const query = Bmob.Query('list');
-				query.set("title", this.title)
-				query.set("content", this.content)
+				query.set("id", this.todo.objectId)
+				query.set("title", this.todo.title)
+				query.set("content", this.todo.content)
 				query.save().then(res => {
-				  console.log("添加数据", res)
+				  console.log("修改数据", res)
 				  uni.showToast({
-				  	title:"添加成功"
+				  	title:"修改成功"
 				  })
 				  setTimeout(function() {
 					  uni.navigateBack()
@@ -47,7 +56,7 @@
 				}).catch(err => {
 				  console.error("添加数据", err)
 				  uni.showToast({
-				  	title:"添加失败，请重试",
+				  	title:"修改失败，请重试",
 				  	icon:"none"
 				  })
 				})
@@ -71,9 +80,9 @@
 	
 	.txt-input {
 		padding: 10rpx;
+		margin: 20rpx 20rpx 0;
 		font-size: 30rpx;
 		transition: all .3s;
-		margin: 20rpx 20rpx 0;
 		border-bottom: 1px solid #eee;
 	}
 	

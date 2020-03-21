@@ -2,9 +2,9 @@
 ---
 Vbe
 ---
-³õÊ¼»¯
+åˆå§‹åŒ–
 `npm init -y`
 
-ÒıÓÃ²å¼ş
+å¼•ç”¨æ’ä»¶
 `npm install @dcloudio/uni-ui`
 `npm install hydrogen-js-sdk`
